@@ -5,10 +5,20 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
+    public static UIManager instance;
+
     public Action onMainMenu;
     public Action onInventoryMenu;
     public GameObject mainMenuPanel;
     public GameObject inventoryMenuPanel;
+
+    public void Awake()
+    {
+        if (instance == null)
+            instance = this;
+        else
+            Destroy(gameObject);
+    }
 
     void Start()
     {

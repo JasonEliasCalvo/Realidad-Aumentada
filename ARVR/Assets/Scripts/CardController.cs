@@ -20,6 +20,11 @@ public class CardController : MonoBehaviour
     public void CreateObject()
     {
         GameObject gameObjectTemp = Instantiate(cardData.object3D);
-        gameObjectTemp.transform.position = gameObjectTemp.transform.forward * 2;
+        gameObjectTemp.transform.position = gameObjectTemp.transform.right * 2;
+
+        GameManager _gameManager = GameObject.FindObjectOfType<GameManager>();
+        _gameManager.DestroyCurrentModel();
+        _gameManager.current3DModel = gameObjectTemp;
+        _gameManager.CurrentScriptableCard = cardData;
     }
 }

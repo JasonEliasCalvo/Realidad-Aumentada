@@ -16,4 +16,4 @@ MonoBehaviour:
   cardName: Carpa
   CardDescription: Carpa primitiva
   cardImage: {fileID: 21300000, guid: 058725e2d98f231478f3e2470ab3ad85, type: 3}
-  object3D: {fileID: 451416848220391997, guid: ad657e80b0b174a49acf1747d58acdbe, type: 3}
+  object3D: {fileID: 2062563950360562037, guid: 1c75fbf82b6b69147846907bbb2cb635, type: 3}
