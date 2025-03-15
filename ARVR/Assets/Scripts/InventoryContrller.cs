@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class InventoryContrller : MonoBehaviour
@@ -16,7 +17,5 @@ public class InventoryContrller : MonoBehaviour
             _objTemp.GetComponent<CardController>().cardData = card;
             _objTemp.GetComponent<CardController>().LoadCard();
         }
-
     }
-
 }

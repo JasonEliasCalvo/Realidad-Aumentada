@@ -9,13 +9,14 @@ public class CardController : MonoBehaviour
     public TextMeshProUGUI nameCard;
     public Image referentImage;
     public ScriptableCards cardData;
+    public Button infoButton;
 
     public void LoadCard()
     {
         nameCard.text = cardData.cardName;
         referentImage.sprite = cardData.cardImage;
+        SetButtonAction(() => UIManager.instance.ShowDescriptionPanel(cardData.CardDescription));
     }
-
 
     public void CreateObject()
     {
@@ -27,4 +28,11 @@ public class CardController : MonoBehaviour
         _gameManager.current3DModel = gameObjectTemp;
         _gameManager.CurrentScriptableCard = cardData;
     }
+
+    public void SetButtonAction(UnityEngine.Events.UnityAction action)
+    {
+        infoButton.onClick.RemoveAllListeners();
+        infoButton.onClick.AddListener(action);
+    }
+
 }

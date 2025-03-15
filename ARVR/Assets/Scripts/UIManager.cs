@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
@@ -9,8 +10,10 @@ public class UIManager : MonoBehaviour
 
     public Action onMainMenu;
     public Action onInventoryMenu;
-    public GameObject mainMenuPanel;
-    public GameObject inventoryMenuPanel;
+    [SerializeField] private GameObject mainMenuPanel;
+    [SerializeField] private GameObject inventoryMenuPanel;
+    public TextMeshProUGUI descriptionCard;
+    public GameObject descriptionCardPanel;
 
     public void Awake()
     {
@@ -36,5 +39,17 @@ public class UIManager : MonoBehaviour
     {
         mainMenuPanel.SetActive(false);
         inventoryMenuPanel.SetActive(true);
+    }
+
+    public void ShowDescriptionPanel(string currentDescription)
+    {
+        descriptionCardPanel.SetActive(true);
+        descriptionCard.text = string.Empty;
+        descriptionCard.text = currentDescription;
+    }
+
+    public void HideDescriptionPanel()
+    {
+        descriptionCardPanel.SetActive(false);
     }
 }
