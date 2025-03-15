@@ -24,9 +24,4 @@ public class GameManager : MonoBehaviour
         current3DModel = null;
         CurrentScriptableCard = null ;
     }
-
-    public void TakeScreenShot()
-    {
-        ScreenCapture.CaptureScreenshot("capture.png");
-    }
 }
