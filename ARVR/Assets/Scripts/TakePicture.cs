@@ -19,7 +19,7 @@ public class TakePicture : MonoBehaviour
     {
         nameFile = "ARVR-"+DateTime.Now.ToString("yyyy-MMM-dd-HH-mm-ss") + ".png";
         initiatePath = Path.Combine(Application.persistentDataPath, nameFile);
-        destinationPath = Path.Combine("/storage/emulated/0/DCIM/Camera");
+        destinationPath = Path.Combine("/storage/emulated/0/Download", nameFile);
 
         ScreenCapture.CaptureScreenshot(nameFile);
 

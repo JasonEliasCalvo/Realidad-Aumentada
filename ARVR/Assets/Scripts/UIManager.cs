@@ -25,8 +25,8 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
-        onMainMenu += OnMainMenu;
-        onInventoryMenu += OnInventoryMenu;
+        GameManager.instance.onMainMenu += OnMainMenu;
+        GameManager.instance.onInventoryMenu += OnInventoryMenu;
     }
 
     public void OnMainMenu()
