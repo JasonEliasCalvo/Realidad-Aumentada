@@ -1,18 +1,18 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+    public TextMeshProUGUI debugText;
+
     public event Action onMainMenu;
     public event Action onInventoryMenu;
-
-    public ScriptableCards CurrentScriptableCard = null;
-
-    public GameObject current3DModel;
+    public Transform containerModels;
 
     public void Awake()
     {
@@ -20,13 +20,6 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         else 
             instance = this;
-    }
-
-    public void DestroyCurrentModel()
-    {
-        Destroy(current3DModel);
-        current3DModel = null;
-        CurrentScriptableCard = null ;
     }
 
     private void Start()
@@ -47,5 +40,10 @@ public class GameManager : MonoBehaviour
     public void CloseApp()
     {
         Application.Quit();
+    }
+
+    public void DebugConsoleMessage(string message)
+    {
+        debugText.text = message;
     }
 }

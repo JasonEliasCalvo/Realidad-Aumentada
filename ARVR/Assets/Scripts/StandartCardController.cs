@@ -4,14 +4,15 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CardController : MonoBehaviour
+public class StandartCardController : MonoBehaviour
 {
     public TextMeshProUGUI nameCard;
     public Image referentImage;
     private ScriptableCards cardData;
     public Button infoButton;
-
+    private ARInterractionManager arInterractionManager;
     public ScriptableCards CardData { get => cardData; set => cardData = value; }
+
 
     public void LoadCard()
     {
@@ -20,15 +21,20 @@ public class CardController : MonoBehaviour
         SetButtonAction(() => UIManager.instance.ShowDescriptionPanel(CardData.CardDescription));
     }
 
+    private void Start()
+    {
+        arInterractionManager = FindObjectOfType<ARInterractionManager>();
+    }
+
     public void CreateObject()
     {
-        GameObject gameObjectTemp = Instantiate(CardData.object3D);
-        gameObjectTemp.transform.position = gameObjectTemp.transform.right * 2;
+        foreach (Transform child in GameManager.instance.containerModels)
+        {
+            Destroy(child.gameObject);
+        }
 
-        GameManager _gameManager = GameObject.FindObjectOfType<GameManager>();
-        _gameManager.DestroyCurrentModel();
-        _gameManager.current3DModel = gameObjectTemp;
-        _gameManager.CurrentScriptableCard = CardData;
+        GameObject gameObjectTemp = Instantiate(CardData.object3D, GameManager.instance.containerModels);
+        arInterractionManager.Item3DModel = gameObjectTemp;
     }
 
     public void SetButtonAction(UnityEngine.Events.UnityAction action)
@@ -36,5 +42,4 @@ public class CardController : MonoBehaviour
         infoButton.onClick.RemoveAllListeners();
         infoButton.onClick.AddListener(action);
     }
-
 }

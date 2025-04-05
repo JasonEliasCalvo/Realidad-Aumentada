@@ -14,8 +14,10 @@ public class InventoryContrller : MonoBehaviour
         foreach (ScriptableCards card in cardScriptable) 
         {
             GameObject _objTemp = Instantiate(standartCardPrefab, contentCard.transform);
-            _objTemp.GetComponent<CardController>().CardData = card;
-            _objTemp.GetComponent<CardController>().LoadCard();
+            _objTemp.GetComponent<StandartCardController>().CardData = card;
+            _objTemp.GetComponent<StandartCardController>().LoadCard();
         }
     }
+
+
 }

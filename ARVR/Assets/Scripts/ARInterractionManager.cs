@@ -18,9 +18,11 @@ public class ARInterractionManager : MonoBehaviour
     {
         set
         {
+            GameManager.instance.DebugConsoleMessage("Se asigna el modelo 3D");
             item3DModel = value;
             item3DModel.transform.position = aRPointer.transform.position;
             item3DModel.transform.rotation = aRPointer.transform.rotation;
+            isInitialPosition = true;
         }
     }
 
@@ -34,15 +36,15 @@ public class ARInterractionManager : MonoBehaviour
     {
         if (isInitialPosition)
         {
+            GameManager.instance.DebugConsoleMessage("Se inisializza la pocicion");
             Vector2 _middlePointScreent = new Vector2(Screen.width / 2, Screen.height / 2);
             aRRaycastManager.Raycast(_middlePointScreent, hits, TrackableType.Planes);
             if (hits.Count > 0)
             {
-                transform.position = hits[0].pose.position;
-                transform.rotation = hits[0].pose.rotation;
+                GameManager.instance.DebugConsoleMessage("Se encuentra la superficie");
+                transform.position = aRPointer.transform.position;
 
                 aRPointer.SetActive(true);
-                isInitialPosition = false;
             }
         }
     }
