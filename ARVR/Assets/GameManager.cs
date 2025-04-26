@@ -9,10 +9,11 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     public TextMeshProUGUI debugText;
+    internal Transform containerModels;
 
     public event Action onMainMenu;
     public event Action onInventoryMenu;
-    public Transform containerModels;
+    public event Action onPointerMenu;
 
     public void Awake()
     {
@@ -27,14 +28,19 @@ public class GameManager : MonoBehaviour
         MainMenu();
     }
 
-    private void MainMenu()
+    public void MainMenu()
     {
         onMainMenu?.Invoke();
     }
 
-    private void InventoryMenu()
+    public void InventoryMenu()
     {
         onInventoryMenu?.Invoke();
+    }
+
+    public void ARPointer()
+    {
+        onPointerMenu?.Invoke();
     }
 
     public void CloseApp()

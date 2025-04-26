@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,12 +9,11 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
 
-    public Action onMainMenu;
-    public Action onInventoryMenu;
-    [SerializeField] private GameObject mainMenuPanel;
-    [SerializeField] private GameObject inventoryMenuPanel;
     public TextMeshProUGUI descriptionCard;
     public GameObject descriptionCardPanel;
+    [SerializeField] private GameObject mainMenuPanel;
+    [SerializeField] private GameObject inventoryMenuPanel;
+    [SerializeField] private GameObject PointerMenuPanel;
 
     public void Awake()
     {
@@ -27,18 +27,51 @@ public class UIManager : MonoBehaviour
     {
         GameManager.instance.onMainMenu += OnMainMenu;
         GameManager.instance.onInventoryMenu += OnInventoryMenu;
+        GameManager.instance.onPointerMenu += OnPointerMenu;
+
+        OnMainMenu();
     }
 
     public void OnMainMenu()
     {
-        mainMenuPanel.SetActive(true);
-        inventoryMenuPanel.SetActive(false);
+        mainMenuPanel.transform.GetChild(0).transform.DOScale(new Vector3(1, 1, 1), 0.3f);
+
+        inventoryMenuPanel.transform.GetChild(0).transform.DOScale(new Vector3(0, 0, 0), 0.5f);
+        inventoryMenuPanel.transform.GetChild(1).transform.DOScale(new Vector3(0, 0, 0), 0.3f);
+        inventoryMenuPanel.transform.GetChild(1).transform.DOMoveY(180, 0.3f);
+
+        PointerMenuPanel.transform.GetChild(0).transform.DOScale(new Vector3(0, 0, 0), 0.3f);
+        PointerMenuPanel.transform.GetChild(1).transform.DOScale(new Vector3(0, 0, 0), 0.3f);
+
+        //mainMenuPanel.SetActive(true);
+        //inventoryMenuPanel.SetActive(false);
     }
 
     public void OnInventoryMenu()
     {
-        mainMenuPanel.SetActive(false);
-        inventoryMenuPanel.SetActive(true);
+        mainMenuPanel.transform.GetChild(0).transform.DOScale(new Vector3(0, 0, 0), 0.3f);
+
+        inventoryMenuPanel.transform.GetChild(0).transform.DOScale(new Vector3(1, 1, 1), 0.5f);
+        inventoryMenuPanel.transform.GetChild(1).transform.DOScale(new Vector3(1, 1, 1), 0.3f);
+        inventoryMenuPanel.transform.GetChild(1).transform.DOMoveY(300, 0.3f);
+
+        //mainMenuPanel.SetActive(false);
+        //inventoryMenuPanel.SetActive(true);
+    }
+
+    public void OnPointerMenu()
+    {
+        mainMenuPanel.transform.GetChild(0).transform.DOScale(new Vector3(0, 0, 0), 0.3f);
+
+        inventoryMenuPanel.transform.GetChild(0).transform.DOScale(new Vector3(0, 0, 0), 0.5f);
+        inventoryMenuPanel.transform.GetChild(1).transform.DOScale(new Vector3(0, 0, 0), 0.3f);
+        inventoryMenuPanel.transform.GetChild(1).transform.DOMoveY(10, 0.3f);
+
+        PointerMenuPanel.transform.GetChild(0).transform.DOScale(new Vector3(1, 1, 1), 0.3f);
+        PointerMenuPanel.transform.GetChild(1).transform.DOScale(new Vector3(1, 1, 1), 0.3f);
+
+        //mainMenuPanel.SetActive(false);
+        //inventoryMenuPanel.SetActive(true);
     }
 
     public void ShowDescriptionPanel(string currentDescription)

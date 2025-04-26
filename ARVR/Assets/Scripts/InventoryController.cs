@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class InventoryContrller : MonoBehaviour
+public class InventoryController : MonoBehaviour
 {
     public GameObject standartCardPrefab;
     public GameObject contentCard;
@@ -14,10 +14,8 @@ public class InventoryContrller : MonoBehaviour
         foreach (ScriptableCards card in cardScriptable) 
         {
             GameObject _objTemp = Instantiate(standartCardPrefab, contentCard.transform);
-            _objTemp.GetComponent<StandartCardController>().CardData = card;
-            _objTemp.GetComponent<StandartCardController>().LoadCard();
+            _objTemp.GetComponent<CardController>().CardData = card;
+            _objTemp.GetComponent<CardController>().LoadCard();
         }
     }
-
-
 }

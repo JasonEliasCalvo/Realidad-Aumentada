@@ -381,7 +381,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -9.0518, y: -12.22}
+  m_AnchoredPosition: {x: -9.051819, y: -12.219971}
   m_SizeDelta: {x: 180, y: 245}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5259054413805428927
@@ -465,19 +465,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2621135849068692788}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5987715044881045806}
-        m_TargetAssemblyTypeName: CardController, Assembly-CSharp
-        m_MethodName: CreateObject
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &5987715044881045806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -492,9 +480,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameCard: {fileID: 7265985688728372151}
   referentImage: {fileID: 909046749755450287}
-  cardData: {fileID: 0}
-  currentCard: {fileID: 0}
   infoButton: {fileID: 5450531395804971223}
+  ItemModel: {fileID: 0}
 --- !u!1 &6091405502879340978
 GameObject:
   m_ObjectHideFlags: 0
